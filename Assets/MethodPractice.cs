@@ -83,4 +83,5 @@ class MethodPractice : MonoBehaviour
 
         return max;
     }
+    //float Round(float num) // HAZI FELADAT ---> KEREKITES
 }
