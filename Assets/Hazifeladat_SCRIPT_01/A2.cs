@@ -10,8 +10,18 @@ class A2 : MonoBehaviour
 
     void OnValidate()
     {
-        hanyados = a / b;
-        maradek = a % b;
-        torthanyados = (float)a / b;
+        if (b != 0)
+        {
+            hanyados = a / b;
+            maradek = a % b;
+            torthanyados = (float)a / b;
+        }
+        else
+        {
+            hanyados = 0;
+            maradek = 0;
+            torthanyados = 0;
+        }
+        
     }
 }
