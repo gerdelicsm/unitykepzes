@@ -27,6 +27,10 @@ public class Follower : MonoBehaviour
         */
         float maxStep = speed * Time.deltaTime;             /// ez ugyanaz, mint a fenti
         transform.position = Vector3.MoveTowards(SelfPosition, targetPoint, maxStep);
-        transform.rotation = Quaternion.LookRotation(-targetPoint-SelfPosition);
+
+        if (targetPoint != SelfPosition) // ne legyen 0 felé nézve hibaüzenet
+        { 
+            transform.rotation = Quaternion.LookRotation(targetPoint - SelfPosition); 
+        }
     }
 }

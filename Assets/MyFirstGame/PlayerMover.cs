@@ -42,11 +42,11 @@ class PlayerMover : MonoBehaviour
         // fordulas
         if(velocity!=Vector3.zero)
         {
-            Quaternion targetRot= Quaternion.LookRotation(-velocity);
+            Quaternion targetRot= Quaternion.LookRotation(velocity);
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation, 
                 targetRot,
-                fordulasi*Time.deltaTime);//én fordítva raktam be a figurát, ezért van minusz velocity
+                fordulasi*Time.deltaTime);
         }
     }
 }
