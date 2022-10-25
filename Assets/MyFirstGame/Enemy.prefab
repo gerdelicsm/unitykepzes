@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 383531145666128130}
   - component: {fileID: 383531145666128128}
   - component: {fileID: 383531145666128129}
+  - component: {fileID: -680108357312636235}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 10.94
+  speed: 90
   SpeedOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -73,6 +74,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rigidBody: {fileID: -680108357312636235}
 --- !u!65 &383531145666128128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99,6 +101,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+--- !u!54 &-680108357312636235
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383531145666128381}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 20
+  m_CollisionDetection: 0
 --- !u!1 &383531146045303522
 GameObject:
   m_ObjectHideFlags: 0

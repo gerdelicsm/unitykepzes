@@ -1,10 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Follower : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float speed = 2;
     [SerializeField] AnimationCurve SpeedOverDistance;
+
+    [SerializeField] Rigidbody rigidBody;
+
+    void OnValidate()
+    {
+        if (rigidBody == null)
+            rigidBody = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -28,8 +37,12 @@ public class Follower : MonoBehaviour
         */
         float distance = Vector3.Distance(transform.position, target.position);
         float speed = SpeedOverDistance.Evaluate(distance);
-        float maxStep = speed * Time.deltaTime;             /// ez ugyanaz, mint a fenti
-        transform.position = Vector3.MoveTowards(SelfPosition, targetPoint, maxStep);
+        /* float maxStep = speed * Time.deltaTime;             /// ez ugyanaz, mint a fenti
+         transform.position = Vector3.MoveTowards(SelfPosition, targetPoint, maxStep);
+        */
+        Vector3 direction = targetPoint - SelfPosition;
+        direction.Normalize();
+        rigidBody.velocity = direction * speed;
 
         if (targetPoint != SelfPosition) // ne legyen 0 felé nézve hibaüzenet
         { 
