@@ -6,6 +6,7 @@ class PlayerMover : MonoBehaviour
     [SerializeField] float speed;   // sebesség megadása --> egységsebesség képfrissítéstõl függetlenül
     // [SerializeField] Vector3 velocity;  //sebesség megadása VEKTORként
     [SerializeField] float fordulasi;
+    [SerializeField] Transform cameraTransform;
     [SerializeField] Animator animator;
 
     void Update()    /// minden egyes képfrissítésnél meghívódik
@@ -23,12 +24,20 @@ class PlayerMover : MonoBehaviour
             x = -1;
 
         float z = 0;
-        if (up && !down)
-            z = 1;
-        else if (down && !up)
-            z = -1;
+         if (up && !down)
+             z = 1;
+         else if (down && !up)
+             z = -1;
 
-        Vector3 velocity = new Vector3(x, 0, z);
+        Vector3 rightDir = cameraTransform.right;
+        Vector3 forwardDir = cameraTransform.forward;
+        rightDir.y = 0;
+        forwardDir.y = 0;
+
+        Vector3 velocity =
+            x * rightDir.normalized + z * forwardDir.normalized;
+
+        //        Vector3 velocity = new Vector3(x, 0, z);
         velocity.Normalize();
         velocity *= speed;
 
